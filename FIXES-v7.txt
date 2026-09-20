@@ -1,0 +1,18 @@
+IT Operations Hub - v7
+
+This release fixes the recurring "Cannot read properties of null (reading 'length')"
+errors across modules.
+
+Key fixes:
+- Backend response layer converts nil Go slices to JSON [] instead of null.
+- Frontend API client recursively normalizes known collection fields and treats
+  successful null list responses as empty arrays.
+- My Work, Dashboard, Tickets, and Reports also have local defensive fallbacks.
+- Turbopack root is explicitly process.cwd(), with run.bat launching from frontend.
+- run.bat clears frontend/.next before starting development mode to prevent stale
+  code from an older ZIP from being served.
+- build.bat clears frontend/.next before a production build.
+- Dashboard remains the first sidebar item and setup/login redirect to /dashboard.
+
+Use a fresh extraction folder for v7. Do not copy frontend/.next or node_modules
+from an older version.
